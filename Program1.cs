@@ -11,6 +11,7 @@ namespace ConsoleApplication1
         [STAThread]
         static void Main(string[] args)
         {
+            var MyAllText = Clipboard.GetText();
             var MyText = Clipboard.GetText().Split('.', ',', ';', ':', '?', '!', '\n', '\r', ' ');
             if (MyText.Length == 1)
             {
@@ -18,7 +19,12 @@ namespace ConsoleApplication1
             }
             else
             {
+                string MySubText = "using System";
+                bool b;
+                b = MyAllText.Contains(MySubText);
                 MyText.Take(1000).Distinct().OrderBy(s => s, StringComparer.OrdinalIgnoreCase).Where(s => !string.IsNullOrEmpty(s)).ToList().ForEach(Console.WriteLine);
+                Console.WriteLine("Буфер текста содержит искомую строку?: {0}", b);
+
             }
             Console.ReadKey();
         }
