@@ -19,7 +19,7 @@ namespace ConsoleApplication1
             }
             else
             {
-                string MySubText = "using System";
+                string MySubText = "Use the ContainsText method to determine whether the Clipboard contains text data before retrieving it with this method.";
                 bool b;
                 b = MyAllText.Contains(MySubText);
                 MyText.Take(1000).Distinct().OrderBy(s => s, StringComparer.OrdinalIgnoreCase).Where(s => !string.IsNullOrEmpty(s)).ToList().ForEach(Console.WriteLine);
