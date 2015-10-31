@@ -1,0 +1,387 @@
+unit Unit1;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons, Vcl.ExtCtrls,
+  Vcl.ComCtrls,System.Math;
+
+type
+  TForm1 = class(TForm)
+    BitBtn1: TBitBtn;
+    BitBtn2: TBitBtn;
+    BitBtn3: TBitBtn;
+    BitBtn4: TBitBtn;
+    ProgressBar1: TProgressBar;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    Timer1: TTimer;
+    Label9: TLabel;
+    Label10: TLabel;
+    Label11: TLabel;
+    Label12: TLabel;
+    Label13: TLabel;
+    ProgressBar2: TProgressBar;
+    Label14: TLabel;
+    Label15: TLabel;
+    ProgressBar3: TProgressBar;
+    Label16: TLabel;
+    Label18: TLabel;
+    Label19: TLabel;
+    Label20: TLabel;
+    Label21: TLabel;
+    Label22: TLabel;
+    Label23: TLabel;
+    Label24: TLabel;
+    Label25: TLabel;
+    Label26: TLabel;
+    Label27: TLabel;
+    Label28: TLabel;
+    Label29: TLabel;
+    Label30: TLabel;
+    Label31: TLabel;
+    Label32: TLabel;
+    Label33: TLabel;
+    Label34: TLabel;
+    Label35: TLabel;
+    Label36: TLabel;
+    Label37: TLabel;
+    Label38: TLabel;
+    Label39: TLabel;
+    Edit1: TEdit;
+    Edit2: TEdit;
+    ComboBox1: TComboBox;
+    BitBtn5: TBitBtn;
+    Label40: TLabel;
+    Label41: TLabel;
+    Label42: TLabel;
+    Label17: TLabel;
+    Label43: TLabel;
+    Label44: TLabel;
+    ListBox1: TListBox;
+    Label45: TLabel;
+    Label46: TLabel;
+    Label47: TLabel;
+    Label48: TLabel;
+    Label49: TLabel;
+    procedure BitBtn1Click(Sender: TObject);
+    procedure BitBtn2Click(Sender: TObject);
+    procedure BitBtn3Click(Sender: TObject);
+    procedure BitBtn4Click(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
+    procedure BitBtn5Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    counter1,counter2,counter3,sign:integer;
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm1.BitBtn1Click(Sender: TObject);
+begin
+ Application.Terminate;
+end;
+
+procedure TForm1.BitBtn2Click(Sender: TObject);
+var
+ bug1,bug2,bug3,x1,x2,x3,x4,x5: integer;
+begin
+ //Инициализация значений и настроек
+ Label14.Caption:='0';
+ Label15.Caption:='0';
+ Label16.Caption:='0';
+ ProgressBar1.State:=pbsNormal;
+ ProgressBar2.State:=pbsNormal;
+ ProgressBar3.State:=pbsNormal;
+ ProgressBar1.Position:=0;
+ ProgressBar2.Position:=0;
+ ProgressBar3.Position:=0;
+ ListBox1.Clear;
+ sign:=1;
+ counter1:=0;
+ counter2:=0;
+ counter3:=0;
+ //Расчёт параметров первого таракашки
+ x1:=Random(10);
+ Label9.Caption:=IntToStr(x1);
+ x2:=Random(10);
+ Label10.Caption:=IntToStr(x2);
+ x3:=Random(10);
+ Label11.Caption:=IntToStr(x3);
+ x4:=Random(10);
+ Label12.Caption:=IntToStr(x4);
+ x5:=Random(10);
+ Label13.Caption:=IntToStr(x5);
+ bug1:=x1+x2+x3+x4+x5;
+ ProgressBar1.Step:=bug1;
+  //Расчёт параметров второго таракашки
+ x1:=Random(10);
+ Label24.Caption:=IntToStr(x1);
+ x2:=Random(10);
+ Label25.Caption:=IntToStr(x2);
+ x3:=Random(10);
+ Label26.Caption:=IntToStr(x3);
+ x4:=Random(10);
+ Label27.Caption:=IntToStr(x4);
+ x5:=Random(10);
+ Label28.Caption:=IntToStr(x5);
+ bug2:=x1+x2+x3+x4+x5;
+ ProgressBar2.Step:=bug2;
+ //Расчёт параметров третьего таракашки
+ x1:=Random(10);
+ Label35.Caption:=IntToStr(x1);
+ x2:=Random(10);
+ Label36.Caption:=IntToStr(x2);
+ x3:=Random(10);
+ Label37.Caption:=IntToStr(x3);
+ x4:=Random(10);
+ Label38.Caption:=IntToStr(x4);
+ x5:=Random(10);
+ Label39.Caption:=IntToStr(x5);
+ bug3:=x1+x2+x3+x4+x5;
+ ProgressBar3.Step:=bug3;
+ //Подкрасим фаваритов и определим коэффициенты ставок
+ // чем круче таракашка - тем меньше коэффициент
+ //(фиг знает зачем эти коэффициенты, потом придумаю)
+ if bug1>bug2 then
+    if bug2>bug3 then
+    begin
+      Label3.Font.Color:=clRed;
+      Label18.Font.Color:=clYellow;
+      Label29.Font.Color:=clGreen;
+      Label40.Caption:=FloatToStr(RoundTo(1+bug3/bug1-0.3,-1));
+      Label41.Caption:=FloatToStr(RoundTo(1+bug3/bug2-0.2,-1));
+      Label42.Caption:=FloatToStr(1.9);
+    end;
+ if bug1>bug3 then
+    if bug3>bug2 then
+    begin
+      Label3.Font.Color:=clRed;
+      Label29.Font.Color:=clYellow;
+      Label18.Font.Color:=clGreen;
+      Label40.Caption:=FloatToStr(RoundTo(1+bug2/bug1-0.3,-1));
+      Label42.Caption:=FloatToStr(RoundTo(1+bug2/bug3-0.2,-1));
+      Label41.Caption:=FloatToStr(1.9);
+     end;
+ if bug3>bug1 then
+    if bug1>bug2 then
+    begin
+      Label29.Font.Color:=clRed;
+      Label3.Font.Color:=clYellow;
+      Label18.Font.Color:=clGreen;
+      Label42.Caption:=FloatToStr(RoundTo(1+bug2/bug3-0.3,-1));
+      Label40.Caption:=FloatToStr(RoundTo(1+bug2/bug1-0.2,-1));
+      Label41.Caption:=FloatToStr(1.9);
+     end;
+ if bug3>bug2 then
+    if bug2>bug1 then
+    begin
+      Label29.Font.Color:=clRed;
+      Label18.Font.Color:=clYellow;
+      Label3.Font.Color:=clGreen;
+      Label42.Caption:=FloatToStr(RoundTo(1+bug1/bug3-0.3,-1));
+      Label41.Caption:=FloatToStr(RoundTo(1+bug1/bug2-0.2,-1));
+      Label40.Caption:=FloatToStr(1.9);
+     end;
+ if bug2>bug1 then
+    if bug1>bug3 then
+    begin
+      Label18.Font.Color:=clRed;
+      Label3.Font.Color:=clYellow;
+      Label29.Font.Color:=clGreen;
+      Label41.Caption:=FloatToStr(RoundTo(1+bug3/bug2-0.3,-1));
+      Label40.Caption:=FloatToStr(RoundTo(1+bug3/bug1-0.2,-1));
+      Label42.Caption:=FloatToStr(1.9);
+     end;
+ if bug2>bug3 then
+    if bug3>bug1 then
+    begin
+      Label18.Font.Color:=clRed;
+      Label29.Font.Color:=clYellow;
+      Label3.Font.Color:=clGreen;
+      Label41.Caption:=FloatToStr(RoundTo(1+bug1/bug2-0.3,-1));
+      Label42.Caption:=FloatToStr(RoundTo(1+bug1/bug3-0.2,-1));
+      Label40.Caption:=FloatToStr(1.9);
+     end;
+ BitBtn3.Enabled:=True;
+end;
+
+procedure TForm1.BitBtn3Click(Sender: TObject);
+begin
+ //Появляются окошки ввода для того, чтобы сделать ставку.
+ Edit1.Visible:=true;
+ Edit2.Visible:=true;
+ BitBtn5.Visible:=true;
+ ComboBox1.Visible:=true;
+end;
+
+procedure TForm1.BitBtn4Click(Sender: TObject);
+begin
+//Различные сообщения при некорректном вводе
+ if ListBox1.Count<=1 then
+  ShowMessage('Так дело не пойдёт! Мало ставок..')
+ else
+  if (StrToFloat(Label14.Caption)=0) and (StrToFloat(Label15.Caption)=0) then
+   ShowMessage('Так дело не пойдёт! Все поставили на одного..')
+  else
+   if (StrToFloat(Label15.Caption)=0) and (StrToFloat(Label16.Caption)=0) then
+    ShowMessage('Так дело не пойдёт! Все поставили на одного..')
+   else
+   if (StrToFloat(Label14.Caption)=0) and (StrToFloat(Label16.Caption)=0) then
+    ShowMessage('Так дело не пойдёт! Все поставили на одного..')
+   else
+    begin
+     Timer1.Enabled:=True;
+     Label48.Visible:=False;
+     Label49.Visible:=False;
+    end;
+end;
+
+procedure TForm1.BitBtn5Click(Sender: TObject);
+begin
+//Тут надо описать механизм ставок
+ if Trim(Edit2.Text)<>'' then
+  begin
+   if StrToFloat(Trim(Edit2.Text))>0 then
+    begin
+      if Trim(Edit1.Text)<>'' then
+       begin
+        if Trim(ComboBox1.Text)<>'' then
+         begin
+          if (StrToFloat(Label49.Caption)<=StrToFloat(Edit2.Text)) then
+           begin
+            BitBtn4.Enabled:=True;
+            BitBtn5.Visible:=False;
+            Edit1.Visible:=False;
+            Edit2.Visible:=False;
+            ComboBox1.Visible:=False;
+            if ComboBox1.Text='Bug 1' then
+             Label14.Caption:=FloatToStr(StrToFloat(Label14.Caption)+StrToFloat(Edit2.Text));
+            if ComboBox1.Text='Bug 2' then
+             Label15.Caption:=FloatToStr(StrToFloat(Label15.Caption)+StrToFloat(Edit2.Text));
+            if ComboBox1.Text='Bug 3' then
+             Label16.Caption:=FloatToStr(StrToFloat(Label16.Caption)+StrToFloat(Edit2.Text));
+            ListBox1.Items.Add(ComboBox1.Text+' '+Trim(Edit2.Text)+'р. '+Trim(Edit1.Text));
+           end
+          else
+           ShowMessage('Так дело не пойдёт! Ставка меньше допустимой..')
+         end
+        else
+         ShowMessage('Нужно выбрать на кого будет ставка..');
+       end
+      else
+       ShowMessage('Не введено имя игрока..');
+    end
+   else
+    ShowMessage('Сумма взноса не может быть такой..');
+  end
+ else
+  begin
+   ShowMessage('Не заполнено поле с суммой взноса..');
+  end;
+//Определим\пересчитаем минимальную ставку
+ Edit2.Text:=FloatToStr(Round(((StrToFloat(Label14.Caption)+StrToFloat(Label15.Caption)+StrToFloat(Label16.Caption))/10+(StrToFloat(Label14.Caption)+StrToFloat(Label15.Caption)+StrToFloat(Label16.Caption))/10*0.11)*100)/100);
+ Label49.Caption:=Edit2.Text;
+ end;
+
+procedure TForm1.Timer1Timer(Sender: TObject);
+var
+ i,x1,x2,x3:integer;
+ stav,fond,sum_stav1,sum_stav2,sum_stav3:real;
+begin
+ fond:=(StrToFloat(Label14.Caption)+StrToFloat(Label15.Caption)+StrToFloat(Label16.Caption));
+ sum_stav1:=StrToFloat(Label14.Caption);
+ sum_stav2:=StrToFloat(Label15.Caption);
+ sum_stav3:=StrToFloat(Label16.Caption);
+
+ sign:=sign*-1;    //Смешная штука. Таракашка может побежать назад :-)
+
+ x1:=ProgressBar1.Step+Random(10)*sign;
+ if (x1<0) and (x1>=-ProgressBar1.Position) then
+  x1:=0;
+ counter1:=counter1+x1;
+ ProgressBar1.Step:=x1;
+
+ x2:=ProgressBar2.Step+Random(10)*sign;
+ if (x2<0) and (x2>=-ProgressBar2.Position) then
+  x2:=0;
+ counter2:=counter2+x2;
+ ProgressBar2.Step:=x2;
+
+ x3:=ProgressBar3.Step+Random(10)*sign;
+ if (x3<0) and (x3>=-ProgressBar3.Position) then
+  x3:=0;
+ ProgressBar3.Step:=x3;
+ counter3:=counter3+x3;
+ //Подкрасим победителя
+ if counter1>=1000 then
+  begin
+   ProgressBar1.State:=pbsError;
+   ProgressBar1.Position:=999;
+   Timer1.Enabled:=False;
+   //Рассчитаем выигрыш для ставок на первого таракашку
+   for i := 0 to ListBox1.Count-1 do
+    begin
+     if pos('ug 1',ListBox1.Items[i])>0 then
+      begin
+       stav:=StrToFloat(Trim(copy(ListBox1.Items[i],6,pos('р.',ListBox1.Items[i])-6)));
+       stav:=(fond-fond/100*10)/sum_stav1*stav;
+       stav:=(Round(stav*100))/100; //Округлим выигрыш до копеек
+       ListBox1.Items[i]:= ListBox1.Items[i]+' '+FloatToStr(stav)+'р.';
+      end;
+    end;
+  end;
+ if counter2>=1000 then
+  begin
+   ProgressBar2.State:=pbsError;
+   ProgressBar2.Position:=999;
+   Timer1.Enabled:=False;
+  //Рассчитаем выигрыш для ставок на второго таракашку
+   for i := 0 to ListBox1.Count-1 do
+    begin
+     if pos('ug 2',ListBox1.Items[i])>0 then
+      begin
+       stav:=StrToFloat(Trim(copy(ListBox1.Items[i],6,pos('р.',ListBox1.Items[i])-6)));
+       stav:=(fond-fond/100*10)/sum_stav2*stav;
+       stav:=(Round(stav*100))/100; //Округлим выигрыш до копеек
+       ListBox1.Items[i]:= ListBox1.Items[i]+' '+FloatToStr(stav)+'р.';
+      end;
+    end;
+  end;
+ if counter3>=1000 then
+  begin
+   ProgressBar3.State:=pbsError;
+   ProgressBar3.Position:=999;
+   Timer1.Enabled:=False;
+   //Рассчитаем выигрыш для ставок на третьего таракашку
+  for i := 0 to ListBox1.Count-1 do
+    begin
+     if pos('ug 3',ListBox1.Items[i])>0 then
+      begin
+       stav:=StrToFloat(Trim(copy(ListBox1.Items[i],6,pos('р.',ListBox1.Items[i])-6)));
+       stav:=(fond-fond/100*10)/sum_stav3*stav;
+       stav:=(Round(stav*100))/100; //Округлим выигрыш до копеек
+       ListBox1.Items[i]:= ListBox1.Items[i]+' '+FloatToStr(stav)+'р.';
+      end;
+    end;
+  end;
+ ProgressBar1.StepIt;
+ ProgressBar2.StepIt;
+ ProgressBar3.StepIt;
+
+end;
+
+end.
